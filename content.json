@@ -1,0 +1,189 @@
+{
+  "profile": {
+    "name": "Ishita Gautam",
+    "tagline": "builds systems that hold up under load.",
+    "eyebrow": "Final-year CSE · VIT Bhopal University",
+    "summary": "Full-stack engineer with hands-on work across real-time systems, on-chain applications, and AI/ML — from a traffic-intelligence platform to a published health-AI app. Graduating May 2027 with a 9.26 CGPA.",
+    "about": [
+      "I'm a final-year B.Tech CSE student at VIT Bhopal University, currently navigating campus placements while wrapping up a dual-track internship spanning software engineering and applied AI/ML.",
+      "My strongest ground is full-stack development — building backends, mobile apps, and the data layers underneath them. Alongside that, I've picked up practical experience in AI/ML (CNNs, NLP, recommendation logic) and blockchain (DAO architecture on ICP), which show up as secondary threads across my projects.",
+      "I care about systems that are honest about what they do — I'd rather ship something smaller that actually works than oversell a feature that isn't there yet."
+    ],
+    "email": "ishitagautam298@gmail.com",
+    "linkedin": "https://linkedin.com/in/ishita-gautam-3a215328a/",
+    "github": "https://github.com/ishitagautam298-droid",
+    "stats": [
+      {
+        "value": "9.26",
+        "label": "CGPA / 10"
+      },
+      {
+        "value": "2",
+        "label": "Internships"
+      },
+      {
+        "value": "1",
+        "label": "Published Paper"
+      },
+      {
+        "value": "~40%",
+        "label": "Latency Cut, UDIE"
+      }
+    ],
+    "quickFacts": [
+      {
+        "label": "Degree",
+        "value": "B.Tech CSE, 2027"
+      },
+      {
+        "label": "CGPA",
+        "value": "9.26 / 10.0"
+      },
+      {
+        "label": "Base",
+        "value": "Aligarh, UP / Bhopal, MP"
+      },
+      {
+        "label": "Focus",
+        "value": "Full-stack"
+      },
+      {
+        "label": "Secondary",
+        "value": "AI/ML · Blockchain"
+      },
+      {
+        "label": "Languages",
+        "value": "English, Hindi"
+      }
+    ]
+  },
+  "experience": [
+    {
+      "id": "exp-mponline",
+      "date": "MAY 2026 — JUL 2026",
+      "role": "Software Engineering & AI/ML Intern (Dual-Track)",
+      "org": "MP Online · Remote",
+      "bullets": [
+        "Completed a dual-track internship spanning advanced software engineering and applied AI/ML, delivering two capstone projects.",
+        "Built a 5-service FastAPI AI platform integrating a Keras/TensorFlow CNN (trained on 60,000+ images) for product classification, OpenCV-based facial recognition, and an NLP sentiment/intent chatbot for retail intelligence.",
+        "Developed a full-stack ASP.NET Core MVC library management system (EF Core 8, Dockerized MySQL) with an automated borrowing/due-date engine and a glassmorphism analytics dashboard."
+      ]
+    },
+    {
+      "id": "exp-blockseblock",
+      "date": "JUN 2025 — JUL 2025",
+      "role": "Blockchain Intern",
+      "org": "BlockseBlock · Remote",
+      "bullets": [
+        "Built a full-stack CRUD application on the Internet Computer Protocol (ICP), enabling efficient on-chain data management.",
+        "Designed a DAO-based course management system with role-based access, applying dApp architecture patterns end to end."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-udie",
+      "title": "UDIE — Real-Time Traffic Intelligence",
+      "period": "NOV 2025 – MAR 2026",
+      "bullets": [
+        "Architected a real-time traffic analysis platform using event-driven architecture and H3 hexagonal spatial indexing.",
+        "Integrated Redis caching to cut query response time by ~40% under peak load.",
+        "Built a cross-platform Flutter app and web dashboard on a NestJS backend, with hand-rolled Dijkstra/A* routing over an adjacency-list road graph."
+      ],
+      "tags": [
+        "NestJS",
+        "Flutter",
+        "PostGIS",
+        "Redis",
+        "H3 Indexing"
+      ],
+      "github": "https://github.com/ishitagautam298-droid/RealTimeTrafficCauseDetection-UDIE"
+    },
+    {
+      "id": "proj-lifetrack",
+      "title": "LifeTrack — AI Health Management",
+      "period": "SEP 2024 – DEC 2024",
+      "bullets": [
+        "Designed and built an AI-powered mobile health app delivering personalised fitness and nutrition plans.",
+        "Used OOP/MVC in Android Studio with a MySQL-backed REST API for data sync.",
+        "Research on the recommendation model and app architecture accepted and published at IDBA 2025."
+      ],
+      "tags": [
+        "Java",
+        "Flutter",
+        "MySQL",
+        "Android Studio"
+      ],
+      "github": "https://github.com/ishitagautam298-droid/LifeTrack"
+    }
+  ],
+  "skills": {
+    "Languages": [
+      "Java",
+      "C++",
+      "Python"
+    ],
+    "Frameworks": [
+      "NestJS",
+      "Flutter",
+      "Android Studio",
+      "ASP.NET Core MVC"
+    ],
+    "Databases": [
+      "MySQL",
+      "PostGIS",
+      "Redis"
+    ],
+    "Concepts": [
+      "OOP",
+      "DBMS",
+      "REST APIs",
+      "AWS",
+      "Agile"
+    ],
+    "DSA": [
+      "Trees",
+      "Graphs",
+      "Recursion",
+      "Sorting & Searching"
+    ],
+    "Tools": [
+      "Git",
+      "GitHub",
+      "Postman",
+      "ICP"
+    ]
+  },
+  "achievements": [
+    {
+      "id": "ach-amazonml",
+      "icon": "ML",
+      "title": "Amazon ML Summer School 2026",
+      "desc": "Competitively selected; completed applied ML coursework (Jul–Aug 2026)."
+    },
+    {
+      "id": "ach-idba",
+      "icon": "✎",
+      "title": "Published Research Paper",
+      "desc": "\"LifeTrack: AI-based Redefining Physical Wellness\" — IDBA 2025 International Conference."
+    },
+    {
+      "id": "ach-accenture",
+      "icon": "🏆",
+      "title": "Accenture Innovation Challenge 2024",
+      "desc": "Semi-finalist with Team Think Byte, out of 10,000+ participants."
+    },
+    {
+      "id": "ach-servicenow",
+      "icon": "SN",
+      "title": "ServiceNow Virtual Internship",
+      "desc": "Administration Fundamentals, Agentic AI, Flow Designer, ATF, Reports, CSA Exam Prep."
+    }
+  ],
+  "education": {
+    "school": "VIT Bhopal University",
+    "degree": "Bachelor of Technology — Computer Science & Engineering",
+    "dates": "Sept 2023 – May 2027 · Bhopal, Madhya Pradesh",
+    "gpa": "9.26"
+  }
+}
