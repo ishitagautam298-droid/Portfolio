@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Ishita's Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0E1A; --panel:#10162B; --panel-alt:#141C36; --ink:#E9ECF7; --muted:#8D96B3;
+    --indigo:#5B62F0; --amber:#F0A93E; --line:rgba(255,255,255,0.1); --danger:#E5637A; --success:#4FCB8D;
+    --display:'Space Grotesk',sans-serif; --body:'Inter',sans-serif; --mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box;}
+  body{background:var(--bg); color:var(--ink); font-family:var(--body); margin:0; min-height:100vh;}
+  a{color:var(--amber);}
+  .topbar{display:flex; justify-content:space-between; align-items:center; padding:18px 28px; border-bottom:1px solid var(--line); position:sticky; top:0; background:rgba(10,14,26,0.9); backdrop-filter:blur(8px); z-index:10;}
+  .topbar .brand{font-family:var(--mono); font-size:14px;}
+  .wrap{max-width:920px; margin:0 auto; padding:32px 24px 80px;}
+  h1{font-family:var(--display); font-size:26px; margin:0 0 6px;}
+  h2{font-family:var(--display); font-size:18px; margin:0 0 16px;}
+  .muted{color:var(--muted); font-size:13.5px;}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:22px; margin-bottom:24px;}
+  input, textarea, select{
+    width:100%; background:var(--bg); border:1px solid rgba(255,255,255,0.14); border-radius:8px; color:var(--ink);
+    padding:10px 12px; font-family:var(--body); font-size:14px; margin-bottom:10px;
+  }
+  textarea{min-height:80px; resize:vertical;}
+  label{font-size:12.5px; color:var(--muted); font-family:var(--mono); display:block; margin-bottom:4px;}
+  .btn{
+    font-family:var(--body); font-weight:600; font-size:13.5px; padding:9px 18px; border-radius:7px;
+    border:none; cursor:pointer; display:inline-flex; align-items:center; gap:6px;
+  }
+  .btn-primary{background:var(--indigo); color:#fff;}
+  .btn-danger{background:transparent; border:1px solid var(--danger); color:var(--danger);}
+  .btn-ghost{background:transparent; border:1px solid rgba(255,255,255,0.18); color:var(--ink);}
+  .btn:disabled{opacity:0.5; cursor:not-allowed;}
+  .row{display:flex; gap:10px; flex-wrap:wrap;}
+  .item{border:1px solid var(--line); border-radius:10px; padding:16px; margin-bottom:12px; background:var(--panel-alt);}
+  .item-head{display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:8px;}
+  .item-title{font-weight:600; font-size:14.5px;}
+  .item-sub{font-size:12.5px; color:var(--muted); font-family:var(--mono);}
+  .msg-item.unread{border-color:var(--amber);}
+  .pill{font-family:var(--mono); font-size:10.5px; padding:2px 8px; border-radius:20px; background:var(--indigo); color:#fff;}
+  .pill.unread{background:var(--amber); color:var(--bg);}
+  .status-msg{font-family:var(--mono); font-size:13px; min-height:18px; margin-top:8px;}
+  .status-msg.error{color:var(--danger);}
+  .status-msg.success{color:var(--success);}
+
+  #loginScreen{display:flex; align-items:center; justify-content:center; min-height:100vh;}
+  .login-box{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:36px; width:100%; max-width:340px;}
+  .login-box h1{margin-bottom:6px;}
+  .login-box p{color:var(--muted); font-size:13.5px; margin-bottom:20px;}
+
+  #dashboard{display:none;}
+  .tabs{display:flex; gap:6px; margin-bottom:24px; flex-wrap:wrap;}
+  .tab-btn{
+    font-family:var(--mono); font-size:12.5px; padding:8px 14px; border-radius:8px; border:1px solid var(--line);
+    background:var(--panel); color:var(--muted); cursor:pointer;
+  }
+  .tab-btn.active{color:var(--ink); border-color:var(--indigo); background:var(--panel-alt);}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;}
+</style>
+</head>
+<body>
+
+<div id="loginScreen">
+  <div class="login-box">
+    <h1>Admin</h1>
+    <p>Sign in to edit portfolio content and view messages.</p>
+    <label for="passwordInput">Password</label>
+    <input type="password" id="passwordInput" placeholder="••••••••">
+    <button class="btn btn-primary" id="loginBtn" style="width:100%; justify-content:center;">Sign In</button>
+    <div class="status-msg" id="loginStatus"></div>
+  </div>
+</div>
+
+<div id="dashboard">
+  <div class="topbar">
+    <div class="brand">ishita.gautam / admin</div>
+    <div class="row">
+      <a href="/" class="btn btn-ghost">View Site</a>
+      <button class="btn btn-ghost" id="logoutBtn">Sign Out</button>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <h1>Content Dashboard</h1>
+    <p class="muted" style="margin-bottom:24px;">Edits save straight to the site's data store — no redeploy needed.</p>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="messages">Messages</button>
+      <button class="tab-btn" data-tab="projects">Projects</button>
+      <button class="tab-btn" data-tab="experience">Experience</button>
+      <button class="tab-btn" data-tab="achievements">Achievements</button>
+      <button class="tab-btn" data-tab="skills">Skills</button>
+    </div>
+
+    <!-- MESSAGES -->
+    <div class="tab-panel active" id="tab-messages">
+      <div class="card">
+        <h2>Contact Form Submissions</h2>
+        <div id="messagesList" class="muted">Loading…</div>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="tab-panel" id="tab-projects">
+      <div class="card">
+        <h2>Add Project</h2>
+        <form id="projectForm">
+          <label>Title</label><input name="title" required>
+          <label>Period (e.g. "NOV 2025 – MAR 2026")</label><input name="period">
+          <label>Bullets (one per line)</label><textarea name="bullets" placeholder="First bullet&#10;Second bullet"></textarea>
+          <label>Tags (comma separated)</label><input name="tags" placeholder="NestJS, Redis, PostGIS">
+          <label>GitHub URL</label><input name="github" placeholder="https://github.com/...">
+          <button class="btn btn-primary" type="submit">Add Project</button>
+          <div class="status-msg" id="projectFormStatus"></div>
+        </form>
+      </div>
+      <div class="card">
+        <h2>Existing Projects</h2>
+        <div id="projectsList" class="muted">Loading…</div>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="tab-panel" id="tab-experience">
+      <div class="card">
+        <h2>Add Experience</h2>
+        <form id="experienceForm">
+          <label>Date range</label><input name="date" placeholder="MAY 2026 — JUL 2026">
+          <label>Role</label><input name="role" required>
+          <label>Org</label><input name="org">
+          <label>Bullets (one per line)</label><textarea name="bullets"></textarea>
+          <button class="btn btn-primary" type="submit">Add Experience</button>
+          <div class="status-msg" id="experienceFormStatus"></div>
+        </form>
+      </div>
+      <div class="card">
+        <h2>Existing Experience</h2>
+        <div id="experienceList" class="muted">Loading…</div>
+      </div>
+    </div>
+
+    <!-- ACHIEVEMENTS -->
+    <div class="tab-panel" id="tab-achievements">
+      <div class="card">
+        <h2>Add Achievement</h2>
+        <form id="achievementForm">
+          <label>Icon (short text/emoji)</label><input name="icon" placeholder="ML">
+          <label>Title</label><input name="title" required>
+          <label>Description</label><textarea name="desc"></textarea>
+          <button class="btn btn-primary" type="submit">Add Achievement</button>
+          <div class="status-msg" id="achievementFormStatus"></div>
+        </form>
+      </div>
+      <div class="card">
+        <h2>Existing Achievements</h2>
+        <div id="achievementsList" class="muted">Loading…</div>
+      </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="tab-panel" id="tab-skills">
+      <div class="card">
+        <h2>Skills by Category</h2>
+        <p class="muted" style="margin-bottom:14px;">Edit as JSON — category name → list of skills. Saves the whole block at once.</p>
+        <textarea id="skillsJson" style="min-height:220px; font-family:var(--mono); font-size:13px;"></textarea>
+        <button class="btn btn-primary" id="saveSkillsBtn">Save Skills</button>
+        <div class="status-msg" id="skillsFormStatus"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const loginScreen = document.getElementById('loginScreen');
+  const dashboard = document.getElementById('dashboard');
+
+  async function checkSession(){
+    const res = await fetch('/api/admin/session');
+    const data = await res.json();
+    if(data.loggedIn){
+      loginScreen.style.display = 'none';
+      dashboard.style.display = 'block';
+      loadAll();
+    }
+  }
+
+  document.getElementById('loginBtn').addEventListener('click', async () => {
+    const password = document.getElementById('passwordInput').value;
+    const statusEl = document.getElementById('loginStatus');
+    const res = await fetch('/api/admin/login', {
+      method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({password})
+    });
+    const data = await res.json();
+    if(res.ok){
+      loginScreen.style.display = 'none';
+      dashboard.style.display = 'block';
+      loadAll();
+    }else{
+      statusEl.textContent = data.error;
+      statusEl.className = 'status-msg error';
+    }
+  });
+  document.getElementById('passwordInput').addEventListener('keydown', (e) => {
+    if(e.key === 'Enter') document.getElementById('loginBtn').click();
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click', async () => {
+    await fetch('/api/admin/logout', {method:'POST'});
+    location.reload();
+  });
+
+  // ---------- tabs ----------
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  async function loadAll(){
+    loadMessages();
+    loadContent();
+  }
+
+  async function loadContent(){
+    const res = await fetch('/api/admin/content');
+    const content = await res.json();
+    renderProjects(content.projects);
+    renderExperience(content.experience);
+    renderAchievements(content.achievements);
+    document.getElementById('skillsJson').value = JSON.stringify(content.skills, null, 2);
+  }
+
+  // ---------- messages ----------
+  async function loadMessages(){
+    const res = await fetch('/api/admin/messages');
+    const messages = await res.json();
+    const el = document.getElementById('messagesList');
+    if(!messages.length){ el.innerHTML = '<p class="muted">No messages yet.</p>'; return; }
+    el.innerHTML = messages.map(m => `
+      <div class="item msg-item ${m.read ? '' : 'unread'}">
+        <div class="item-head">
+          <div>
+            <div class="item-title">${escapeHtml(m.name)} — <a href="mailto:${escapeHtml(m.email)}">${escapeHtml(m.email)}</a></div>
+            <div class="item-sub">${new Date(m.receivedAt).toLocaleString()}</div>
+          </div>
+          <span class="pill ${m.read ? '' : 'unread'}">${m.read ? 'read' : 'new'}</span>
+        </div>
+        <div style="font-size:14px; margin:10px 0; white-space:pre-wrap;">${escapeHtml(m.message)}</div>
+        <div class="row">
+          ${!m.read ? `<button class="btn btn-ghost" onclick="markRead('${m.id}')">Mark Read</button>` : ''}
+          <button class="btn btn-danger" onclick="deleteMessage('${m.id}')">Delete</button>
+        </div>
+      </div>
+    `).join('');
+  }
+  async function markRead(id){
+    await fetch(`/api/admin/messages/${id}/read`, {method:'PATCH'});
+    loadMessages();
+  }
+  async function deleteMessage(id){
+    if(!confirm('Delete this message?')) return;
+    await fetch(`/api/admin/messages/${id}`, {method:'DELETE'});
+    loadMessages();
+  }
+
+  // ---------- projects ----------
+  function renderProjects(projects){
+    const el = document.getElementById('projectsList');
+    if(!projects.length){ el.innerHTML = '<p class="muted">No projects yet.</p>'; return; }
+    el.innerHTML = projects.map(p => `
+      <div class="item">
+        <div class="item-head">
+          <div>
+            <div class="item-title">${escapeHtml(p.title)}</div>
+            <div class="item-sub">${escapeHtml(p.period || '')}</div>
+          </div>
+          <button class="btn btn-danger" onclick="deleteItem('projects','${p.id}', loadContent)">Delete</button>
+        </div>
+        <div class="row">${(p.tags||[]).map(t => `<span class="pill">${escapeHtml(t)}</span>`).join('')}</div>
+      </div>
+    `).join('');
+  }
+  document.getElementById('projectForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const payload = {
+      title: fd.get('title'),
+      period: fd.get('period'),
+      bullets: (fd.get('bullets')||'').split('\n').map(s=>s.trim()).filter(Boolean),
+      tags: (fd.get('tags')||'').split(',').map(s=>s.trim()).filter(Boolean),
+      github: fd.get('github')
+    };
+    const res = await postJson('/api/admin/projects', payload);
+    showStatus('projectFormStatus', res);
+    if(res.ok){ e.target.reset(); loadContent(); }
+  });
+
+  // ---------- experience ----------
+  function renderExperience(experience){
+    const el = document.getElementById('experienceList');
+    if(!experience.length){ el.innerHTML = '<p class="muted">No experience entries yet.</p>'; return; }
+    el.innerHTML = experience.map(x => `
+      <div class="item">
+        <div class="item-head">
+          <div>
+            <div class="item-title">${escapeHtml(x.role)}</div>
+            <div class="item-sub">${escapeHtml(x.org || '')} · ${escapeHtml(x.date || '')}</div>
+          </div>
+          <button class="btn btn-danger" onclick="deleteItem('experience','${x.id}', loadContent)">Delete</button>
+        </div>
+      </div>
+    `).join('');
+  }
+  document.getElementById('experienceForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const payload = {
+      date: fd.get('date'),
+      role: fd.get('role'),
+      org: fd.get('org'),
+      bullets: (fd.get('bullets')||'').split('\n').map(s=>s.trim()).filter(Boolean)
+    };
+    const res = await postJson('/api/admin/experience', payload);
+    showStatus('experienceFormStatus', res);
+    if(res.ok){ e.target.reset(); loadContent(); }
+  });
+
+  // ---------- achievements ----------
+  function renderAchievements(achievements){
+    const el = document.getElementById('achievementsList');
+    if(!achievements.length){ el.innerHTML = '<p class="muted">No achievements yet.</p>'; return; }
+    el.innerHTML = achievements.map(a => `
+      <div class="item">
+        <div class="item-head">
+          <div>
+            <div class="item-title">${escapeHtml(a.icon || '')} ${escapeHtml(a.title)}</div>
+            <div class="item-sub">${escapeHtml(a.desc || '')}</div>
+          </div>
+          <button class="btn btn-danger" onclick="deleteItem('achievements','${a.id}', loadContent)">Delete</button>
+        </div>
+      </div>
+    `).join('');
+  }
+  document.getElementById('achievementForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const payload = { icon: fd.get('icon'), title: fd.get('title'), desc: fd.get('desc') };
+    const res = await postJson('/api/admin/achievements', payload);
+    showStatus('achievementFormStatus', res);
+    if(res.ok){ e.target.reset(); loadContent(); }
+  });
+
+  // ---------- skills ----------
+  document.getElementById('saveSkillsBtn').addEventListener('click', async () => {
+    let parsed;
+    try{
+      parsed = JSON.parse(document.getElementById('skillsJson').value);
+    }catch(err){
+      showStatus('skillsFormStatus', {ok:false, error:'That\'s not valid JSON — check for a stray comma or quote.'});
+      return;
+    }
+    const res = await fetch('/api/admin/skills', {
+      method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify(parsed)
+    });
+    const data = await res.json();
+    showStatus('skillsFormStatus', {ok: res.ok, error: data.error, message:'Skills saved.'});
+  });
+
+  // ---------- shared helpers ----------
+  async function postJson(url, payload){
+    const res = await fetch(url, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
+    const data = await res.json().catch(()=>({}));
+    return { ok: res.ok, error: data.error, message: 'Saved.' };
+  }
+  async function deleteItem(section, id, refresh){
+    if(!confirm('Delete this item?')) return;
+    await fetch(`/api/admin/${section}/${id}`, {method:'DELETE'});
+    refresh();
+  }
+  function showStatus(elId, res){
+    const el = document.getElementById(elId);
+    el.textContent = res.ok ? (res.message || 'Saved.') : (res.error || 'Something went wrong.');
+    el.className = 'status-msg ' + (res.ok ? 'success' : 'error');
+  }
+  function escapeHtml(str){
+    return String(str ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  checkSession();
+</script>
+</body>
+</html>
