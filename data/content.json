@@ -1,16 +1,18 @@
 {
   "profile": {
     "name": "Ishita Gautam",
-    "tagline": "builds systems that hold up under load.",
-    "eyebrow": "Final-year CSE · VIT Bhopal University",
-    "summary": "Full-stack engineer with hands-on work across real-time systems, on-chain applications, and AI/ML — from a traffic-intelligence platform to a published health-AI app. Graduating May 2027 with a 9.26 CGPA.",
+    "tagline": "builds scalable web applications & real-time systems.",
+    "eyebrow": "B.Tech CSE — 2027 Batch · Vellore Institute of Technology",
+    "summary": "Final-year B.Tech (CSE) student at Vellore Institute of Technology (CGPA 9.26/10) with hands-on experience in full-stack development using Spring Boot, ReactJS, and NestJS, plus real-time systems and AI-powered applications, and a published research paper at IDBA 2025. Proficient in Java, DBMS, Operating Systems, and Object-Oriented Programming. Seeking a Full Stack Developer role to build scalable web applications within a collaborative engineering team.",
     "about": [
-      "I'm a final-year B.Tech CSE student at VIT Bhopal University, currently navigating campus placements while wrapping up a dual-track internship spanning software engineering and applied AI/ML.",
-      "My strongest ground is full-stack development — building backends, mobile apps, and the data layers underneath them. Alongside that, I've picked up practical experience in AI/ML (CNNs, NLP, recommendation logic) and blockchain (DAO architecture on ICP), which show up as secondary threads across my projects.",
-      "I care about systems that are honest about what they do — I'd rather ship something smaller that actually works than oversell a feature that isn't there yet."
+      "I'm a final-year B.Tech CSE student at Vellore Institute of Technology (Bhopal, MP) with a 9.26/10 CGPA, actively seeking Full Stack Developer roles to build scalable web applications within collaborative engineering teams.",
+      "My core technical ground spans full-stack development using Java, Spring Boot, ReactJS, and NestJS, complemented by practical expertise in real-time systems (event-driven architecture, PostGIS, Redis caching) and applied AI/ML (CNNs, OpenCV, NLP).",
+      "I've published research at the IDBA 2025 International Conference and contributed across high-impact projects including an intelligent traffic analysis platform, an AI health management mobile app, and enterprise blockchain dApps on ICP."
     ],
     "email": "ishitagautam298@gmail.com",
-    "linkedin": "https://linkedin.com/in/ishita-gautam-3a215328a/",
+    "phone": "+91-8630959357",
+    "location": "Aligarh, UP, India",
+    "linkedin": "https://linkedin.com/in/ishita-gautam-3a215328a",
     "github": "https://github.com/ishitagautam298-droid",
     "stats": [
       {
@@ -36,46 +38,54 @@
         "value": "B.Tech CSE, 2027"
       },
       {
+        "label": "University",
+        "value": "Vellore Institute of Technology"
+      },
+      {
         "label": "CGPA",
         "value": "9.26 / 10.0"
       },
       {
-        "label": "Base",
+        "label": "Location",
         "value": "Aligarh, UP / Bhopal, MP"
       },
       {
-        "label": "Focus",
-        "value": "Full-stack"
+        "label": "Phone",
+        "value": "+91-8630959357"
+      },
+      {
+        "label": "Primary Focus",
+        "value": "Full Stack (Spring Boot, ReactJS, NestJS)"
       },
       {
         "label": "Secondary",
-        "value": "AI/ML · Blockchain"
+        "value": "AI/ML · Real-Time Systems · Blockchain"
       },
       {
         "label": "Languages",
-        "value": "English, Hindi"
+        "value": "English (Professional), Hindi (Native)"
       }
     ]
   },
   "experience": [
     {
       "id": "exp-mponline",
-      "date": "MAY 2026 — JUL 2026",
-      "role": "Software Engineering & AI/ML Intern (Dual-Track)",
-      "org": "MP Online · Remote",
+      "date": "MAY 2026 – JUL 2026",
+      "role": "Advanced Software Engineering & Development, AI/ML (Dual-Track)",
+      "org": "MP Online Internship · Remote",
       "bullets": [
-        "Completed a dual-track internship spanning advanced software engineering and applied AI/ML, delivering two capstone projects.",
-        "Built a 5-service FastAPI AI platform integrating a Keras/TensorFlow CNN (trained on 60,000+ images) for product classification, OpenCV-based facial recognition, and an NLP sentiment/intent chatbot for retail intelligence.",
+        "Completed a dual-track internship in advanced software engineering and applied AI/ML, delivering two capstone projects.",
+        "Built a 5-service FastAPI AI platform integrating a Keras/TensorFlow CNN (60,000+ images) for product classification, OpenCV facial recognition, and an NLP sentiment/intent chatbot for retail intelligence.",
         "Developed a full-stack ASP.NET Core MVC library management system (EF Core 8, Dockerized MySQL) with an automated borrowing/due-date engine and a glassmorphism analytics dashboard."
       ]
     },
     {
       "id": "exp-blockseblock",
-      "date": "JUN 2025 — JUL 2025",
+      "date": "JUN 2025 – JUL 2025",
       "role": "Blockchain Intern",
       "org": "BlockseBlock · Remote",
       "bullets": [
-        "Built a full-stack CRUD application on the Internet Computer Protocol (ICP), enabling efficient on-chain data management.",
+        "Built a full-stack CRUD application on Internet Computer Protocol (ICP), enabling efficient on-chain data management.",
         "Designed a DAO-based course management system with role-based access, applying dApp architecture patterns end to end."
       ]
     }
@@ -83,36 +93,37 @@
   "projects": [
     {
       "id": "proj-udie",
-      "title": "UDIE — Real-Time Traffic Intelligence",
+      "title": "Real-Time Traffic Intelligence System (UDIE)",
       "period": "NOV 2025 – MAR 2026",
       "bullets": [
-        "Architected a real-time traffic analysis platform using event-driven architecture and H3 hexagonal spatial indexing.",
-        "Integrated Redis caching to cut query response time by ~40% under peak load.",
-        "Built a cross-platform Flutter app and web dashboard on a NestJS backend, with hand-rolled Dijkstra/A* routing over an adjacency-list road graph."
+        "Architected a scalable, real-time traffic analysis platform using event-driven architecture and H3 spatial indexing; integrated Redis caching to cut query response time by ~40% under peak load.",
+        "Developed a cross-platform Flutter mobile app and web dashboard with a NestJS backend, including automated anomaly detection and live alerting."
       ],
       "tags": [
         "NestJS",
-        "Flutter",
+        "Python",
         "PostGIS",
         "Redis",
+        "Flutter",
         "H3 Indexing"
       ],
       "github": "https://github.com/ishitagautam298-droid/RealTimeTrafficCauseDetection-UDIE"
     },
     {
       "id": "proj-lifetrack",
-      "title": "LifeTrack — AI Health Management",
+      "title": "LifeTrack — AI Health Management App",
       "period": "SEP 2024 – DEC 2024",
       "bullets": [
-        "Designed and built an AI-powered mobile health app delivering personalised fitness and nutrition plans.",
-        "Used OOP/MVC in Android Studio with a MySQL-backed REST API for data sync.",
-        "Research on the recommendation model and app architecture accepted and published at IDBA 2025."
+        "Designed and built an AI-powered mobile health app delivering personalised fitness/nutrition plans, using OOP/MVC in Android Studio with MySQL-backed REST API data sync.",
+        "Research on the AI recommendation model and application architecture was accepted and published at the IDBA 2025 International Conference."
       ],
       "tags": [
         "Java",
         "Flutter",
         "MySQL",
-        "Android Studio"
+        "Android Studio",
+        "OOP/MVC",
+        "REST API"
       ],
       "github": "https://github.com/ishitagautam298-droid/LifeTrack"
     }
@@ -120,14 +131,14 @@
   "skills": {
     "Languages": [
       "Java",
-      "C++",
-      "Python"
+      "JavaScript"
     ],
     "Frameworks": [
+      "Spring Boot",
+      "ReactJS",
       "NestJS",
       "Flutter",
-      "Android Studio",
-      "ASP.NET Core MVC"
+      "Android Studio"
     ],
     "Databases": [
       "MySQL",
@@ -136,25 +147,24 @@
     ],
     "Concepts": [
       "OOP",
-      "DBMS",
       "REST APIs",
+      "DBMS",
+      "Operating Systems",
       "AWS",
       "Agile"
     ],
-    "DSA": [
-      "Trees",
-      "Graphs",
-      "Recursion",
-      "Sorting & Searching"
-    ],
     "Tools": [
       "Git",
-      "GitHub",
-      "Postman",
-      "ICP"
+      "GitHub"
     ]
   },
   "achievements": [
+    {
+      "id": "ach-paper",
+      "icon": "📄",
+      "title": "Published Research Paper",
+      "desc": "“LifeTrack: AI-based Redefining Physical Wellness Through MySQL, Flutter, and Android Studio” — IDBA 2025 International Conference."
+    },
     {
       "id": "ach-amazonml",
       "icon": "ML",
@@ -162,26 +172,26 @@
       "desc": "Competitively selected; completed applied ML coursework (Jul–Aug 2026)."
     },
     {
-      "id": "ach-idba",
-      "icon": "✎",
-      "title": "Published Research Paper",
-      "desc": "\"LifeTrack: AI-based Redefining Physical Wellness\" — IDBA 2025 International Conference."
+      "id": "ach-servicenow",
+      "icon": "SN",
+      "title": "ServiceNow Virtual Internship Program",
+      "desc": "ServiceNow University / AICTE / SmartBridge; Administration Fundamentals, Agentic AI, Flow Designer, ATF, Reports, CSA Exam Prep (May 2026)."
     },
     {
       "id": "ach-accenture",
       "icon": "🏆",
       "title": "Accenture Innovation Challenge 2024",
-      "desc": "Semi-finalist with Team Think Byte, out of 10,000+ participants."
+      "desc": "Semi-finalist with Team Think Byte out of 10,000+ participants."
     },
     {
-      "id": "ach-servicenow",
-      "icon": "SN",
-      "title": "ServiceNow Virtual Internship",
-      "desc": "Administration Fundamentals, Agentic AI, Flow Designer, ATF, Reports, CSA Exam Prep."
+      "id": "ach-java-cert",
+      "icon": "☕",
+      "title": "Programming in Java — Vityarthi",
+      "desc": "NPTEL-style; Core Java, OOP, exception handling, collections, and file I/O."
     }
   ],
   "education": {
-    "school": "VIT Bhopal University",
+    "school": "Vellore Institute of Technology",
     "degree": "Bachelor of Technology — Computer Science & Engineering",
     "dates": "Sept 2023 – May 2027 · Bhopal, Madhya Pradesh",
     "gpa": "9.26"

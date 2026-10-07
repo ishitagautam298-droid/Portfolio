@@ -502,8 +502,8 @@
   <canvas id="hexcanvas"></canvas>
   <div class="wrap">
     <div class="hero-inner">
-      <div class="eyebrow" id="heroEyebrow"><span class="live-pulse"></span> Final-year CSE · VIT Bhopal University</div>
-      <h1 id="heroHeading">Ishita Gautam<br><span class="gradient-text">builds systems</span> that hold up under load.</h1>
+      <div class="eyebrow" id="heroEyebrow"><span class="live-pulse"></span> B.Tech CSE — 2027 Batch · Vellore Institute of Technology</div>
+      <h1 id="heroHeading">Ishita Gautam<br><span class="gradient-text">builds scalable web applications</span> &amp; real-time systems.</h1>
       <p class="hero-sub" id="heroSub"></p>
       <div class="cta-row">
         <a href="#projects" class="btn btn-primary">View Projects</a>
@@ -640,7 +640,7 @@
 
   function renderHero(profile){
     document.getElementById('heroEyebrow').innerHTML = `<span class="live-pulse"></span> ${profile.eyebrow}`;
-    document.getElementById('heroHeading').innerHTML = `${profile.name}<br><span class="gradient-text">builds systems</span> that hold up under load.`;
+    document.getElementById('heroHeading').innerHTML = `${profile.name}<br><span class="gradient-text">${profile.tagline || 'builds scalable systems'}</span>`;
     document.getElementById('heroSub').textContent = profile.summary;
     const stats = document.getElementById('heroStats');
     stats.innerHTML = profile.stats.map(s => `<div class="stat"><b>${s.value}</b><span>${s.label}</span></div>`).join('');
@@ -721,6 +721,7 @@
   function renderContactLinks(profile){
     document.getElementById('contactLinks').innerHTML = `
       <a href="mailto:${profile.email}" class="btn btn-primary">Email Me</a>
+      ${profile.phone ? `<a href="tel:${profile.phone.replace(/[^0-9+]/g, '')}" class="btn btn-ghost">Call / WhatsApp</a>` : ''}
       <a href="${profile.linkedin}" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
       <a href="${profile.github}" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
     `;
